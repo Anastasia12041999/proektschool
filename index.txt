@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Кнопка ЗОЖ со статьями и высказываниями</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  padding: 0;
+ margin: 0; 
+}
+
+#container {
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+#main-content {
+  width: 70%;
+  text-align: center;
+}
+
+#sidebar {
+  width: 25%;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+.sidebar-article {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.sidebar-article:hover {
+  background-color: #e0e0e0;
+}
+
+#quote-display {
+  margin-top: 20px;
+  font-style: italic;
+  color: #555;
+  text-align: center;
+}
+
+#interesting-facts {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8f8f8;
+}
+
+#interesting-facts span {
+  color: #f00;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#quizBtn {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+#quizBtn:hover {
+  background-color: #3e8e41;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#qa-section {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #e8f5e9;
+}
+
+.answer {
+  display: none;
+  margin-top: 10px;
+  background-color: #dcedc8;
+  padding: 10px;
+  border-radius: 5px;
+}
+</style>
+</head>
+<body>
+
+<figcaption align="center"><img src="https://i0.wp.com/spo-dpt.ru/wp-content/uploads/novosti/vr/denzdorov/zozh.png?fit=847%2C414&ssl=1" width="800" height="450">
+
+
+<font color="#000080" "garamond" size="5px" <h2><figcaption align="center">Участник конкурса "КРИТ-2025" Атюшев Данил привествует жюри конкурса!</h2></font>
+
+<div id="container">
+  <div id="main-content">
+    <button id="myBtn"><h2>Узнать больше о здоровом образе жизни</h2></button>
+    <div id="quote-display"></div>
+
+  </div>
+
+
+
+  <div id="sidebar">
+   <figcaption align="left"><h3>Высказывания про спорт</h3>
+    <div class="sidebar-article" onclick="displayQuote('Спорт — это жизнь. Да здравствует спорт!')">Спорт - это жизнь</div>
+    <div class="sidebar-article" onclick="displayQuote('Движение — это жизнь, а жизнь — это движение. Аристотель')">Движение</div>
+    <div class="sidebar-article" onclick="displayQuote('Чтобы дойти до цели, надо прежде всего идти. Оноре де Бальзак')">Путь к цели</div>
+    <div class="sidebar-article" onclick="displayQuote('Девять десятых нашего счастья зависит от здоровья. Артур Шопенгауэр')">Здоровье</div>
+    <div id="interesting-facts">
+      <h4>Интересные факты о спорте</h4>
+     <figcaption align="left"> <p><span>Ф</span><span>а</span><span>к</span><span>т</span> 1: Спорт — лучшая профилактика депрессии, диабета и инсульта.</p>
+      <figcaption align="left"><p><span>Ф</span><span>а</span><span>к</span><span>т</span> 2: Для пожилых людей самыми полезными видами спорта являются теннис, бадминтон, плавание, велоспорт.</p>
+      <figcaption align="left"><p><span>Ф</span><span>а</span><span>к</span><span>т</span> 3: Спорт способствует развитию дисциплины и самоконтроля.</p>
+    </div>
+  </div>
+</div>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+     <h2><figcaption align="center">Понятие здорового образа жизни</h2>
+    <p><p align="justify">Здоровье — одна из самых главных и важнейших составляющих счастья, это драгоценность, дарованная человеку, которую он обязан беречь с детских лет, ведь здоровый человек формирует здоровую нацию, а с ней — здоровую планету.
+Одна из основных составляющих здоровья — здоровый образ жизни. Это такой образ жизни человека, который направлен на укрепление здоровья и профилактику болезней. Иными словами, здоровый образ жизни — это список правил, соблюдение которых максимально обеспечит сохранение и укрепление здоровья (как физического, так и психического).
+Соблюдение правил ЗОЖ позволяет значительно укрепить здоровье, увеличить продолжительность жизни и улучшить ее качество.</p>
+    <h2><figcaption align="center">Что включает в себя здоровый образ жизни?</h2>
+ <p><p align="justify">Здоровье внутренних органов, внешний облик, самочувствие и иммунитет напрямую зависят от того, что мы употребляем в пищу. Здоровое питание предполагает исключение ароматизаторов, усилителей вкуса, жирных продуктов, красителей и консервантов, или, как минимум, их сокращение.<br/> 
+<p align="justify">Регулярные физические упражнения: минимум 30 минут умеренной активности в день.<br/> 
+<p align="justify">Важно спать не менее 7-8 часов в сутки. Наиболее приемлемым временем для сна специалисты считают промежуток между 10 часами вечера и 6 часами утра.<br/> 
+<p align="justify">Необходимо своевременно делать прививки, отказаться от вредных привычек, вовремя диагностировать и лечить болезни, не заниматься самолечением.<br/> 
+<p align="justify">Отказ от вредных привычек: курение, злоупотребление алкоголем.<br/> 
+<p align="justify">Управление стрессом: техники релаксации, медитация.<br/>
+<br/></p>
+<figcaption align="center"><img src="https://litoral.ru/wp-content/uploads/2020/02/8dae88ds-1920.png" width="800" height="300">
+  </div>
+</div>
+
+
+
+
+
+<div id="qa-section">
+  <h3><figcaption align="left">Вопросы о здоровье</h3>
+  <p><figcaption align="left">Почему спорт полезен?</p>
+  <figcaption align="left"><button onclick="toggleAnswer('answer1')">Ответ</button>
+ <figcaption align="left"> <div id="answer1" class="answer">Спорт улучшает сердечно-сосудистую систему, укрепляет мышцы и кости, способствует снижению стресса и улучшению настроения.</div>
+
+  <figcaption align="left"><p>Какое значение имеет сбалансированное питание?</p>
+ <figcaption align="left"> <button onclick="toggleAnswer('answer2')">Ответ</button>
+  <figcaption align="left"><div id="answer2" class="answer">Сбалансированное питание обеспечивает организм необходимыми питательными веществами, поддерживает энергию и здоровье.</div>
+</div>
+
+<script>
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+function displayQuote(quote) {
+  document.getElementById("quote-display").innerHTML = quote;
+}
+function toggleAnswer(answerId) {
+  var answer = document.getElementById(answerId);
+  if (answer.style.display === "none") {
+    answer.style.display = "block";
+  } else {
+    answer.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
